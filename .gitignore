@@ -643,3 +643,5 @@ MigrationBackup/
 # End of https://www.toptal.com/developers/gitignore/api/visualstudio,aspnetcore,csharp
 
 UnfallVisualisierung/US_Accidents_June20.csv
+
+ImportData/ImportData/ImportData/US_Accidents_June20.csv
