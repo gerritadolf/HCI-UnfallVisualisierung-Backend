@@ -7,7 +7,7 @@ namespace ImportData
     public static class Strings
     {
         public static string createTableString = @"DROP TABLE AccidentTables;
-CREATE TABLE IF NOT EXISTS AccidentTables (
+CREATE TABLE IF NOT EXISTS AccidentEvents (
       ID varchar(50) not null primary key,
       Source varchar(128),
       TMC float,
@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS AccidentTables (
       Start_Lng float,
       End_Lng float,
       Distance float,
-      Description varchar(256),
+      Description varchar(256) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
       Number varchar(128),
       Street varchar(256),
       Side varchar(128),
@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS AccidentTables (
 );
 ";
         public static string insertQuery = @"INSERT INTO
-  AccidentTables (
+  AccidentEvents (
       ID,
       Source,
       TMC ,

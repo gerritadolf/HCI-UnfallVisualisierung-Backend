@@ -35,7 +35,7 @@ namespace ImportData
             }
             Console.WriteLine("Step 2: CSV einlesen.");
 
-            using (StreamReader sr = new StreamReader("C:/dev/Studium/HCI/ImportData/ImportData/ImportData/US_Accidents_June20.csv"))
+            using (StreamReader sr = new StreamReader("C:/dev/Studium/HCI/Backend/ImportData/ImportData/ImportData/US_Accidents_June20.csv"))
             {
                 Console.WriteLine("Step 2: CSV gefunden. Beginne Übertragung in DB.");
                 string currentLine;
