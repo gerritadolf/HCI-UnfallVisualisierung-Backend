@@ -56,6 +56,9 @@ namespace UnfallVisualisierung
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseCors(
+                options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
+            );
 
             app.UseEndpoints(endpoints =>
             {
