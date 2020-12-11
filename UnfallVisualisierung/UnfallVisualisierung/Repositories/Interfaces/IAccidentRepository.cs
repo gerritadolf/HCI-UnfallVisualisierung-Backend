@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GeoJSON.Net.Feature;
+using System;
 using System.Threading.Tasks;
 using UnfallVisualisierung.Model;
 
@@ -15,6 +16,6 @@ namespace UnfallVisualisierung.Repositories.Interfaces
         /// <param name="startTime">start of timeframe</param>
         /// <param name="endTime">end of timeframe</param>
         /// <returns>Data object with feature collection of coordinates for accidents in timeframe</returns>
-        public Task<GeoJsonData> GetGeoData(DateTime startTime, DateTime endTime);
+        public Task<FeatureCollection> GetGeoData(DateTime startTime, DateTime endTime);
     }
 }

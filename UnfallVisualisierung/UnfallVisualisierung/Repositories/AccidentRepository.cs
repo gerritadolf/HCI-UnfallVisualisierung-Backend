@@ -23,7 +23,7 @@ namespace UnfallVisualisierung.Repositories
             _logger = logger;
         }
 
-        public async Task<GeoJsonData> GetGeoData(DateTime startTime, DateTime endTime)
+        public async Task<FeatureCollection> GetGeoData(DateTime startTime, DateTime endTime)
         {
             var query = @"  SELECT Start_Lat AS latitude, Start_Lng AS longitude, NULL as altitude
                             FROM AccidentEvents
@@ -42,7 +42,7 @@ namespace UnfallVisualisierung.Repositories
                     List<Feature> points = conn.Query<PointWrapper>(query, parameters).Select(pos => {
                         return new Feature(pos.Point);
                     }).ToList();
-                    return new GeoJsonData(new FeatureCollection(points));
+                    return new FeatureCollection(points);
                 }
             }
             catch (Exception e)
