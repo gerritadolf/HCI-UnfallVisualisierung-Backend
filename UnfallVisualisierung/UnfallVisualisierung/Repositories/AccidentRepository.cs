@@ -25,7 +25,7 @@ namespace UnfallVisualisierung.Repositories
 
         public async Task<FeatureCollection> GetGeoData(DateTime startTime, DateTime endTime)
         {
-            var query = @"  SELECT Start_Lat AS latitude, Start_Lng AS longitude, NULL as altitude
+            var query = @"  SELECT Start_Lat AS latitude, Start_Lng AS longitude, ID as Id
                             FROM AccidentEvents
                             WHERE Start_Time BETWEEN @StartTime AND @EndTime;";
             var parameters = new DynamicParameters();
@@ -40,7 +40,9 @@ namespace UnfallVisualisierung.Repositories
                         return null; 
                     }
                     List<Feature> points = conn.Query<PointWrapper>(query, parameters).Select(pos => {
-                        return new Feature(pos.Point);
+                        var f = new Feature(pos.Point);
+                        f.Properties.Add("Id", pos.Id);
+                        return f;
                     }).ToList();
                     return new FeatureCollection(points);
                 }
