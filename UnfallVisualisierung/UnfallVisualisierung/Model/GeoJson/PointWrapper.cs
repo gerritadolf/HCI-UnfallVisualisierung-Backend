@@ -10,6 +10,7 @@ namespace UnfallVisualisierung.Model.GeoJson
     {
         public float Latitude { get; set; }
         public float Longitude { get; set; }
+        public string Id { get; set; }
         public Point Point { get => new Point(new Position(this.Latitude, this.Longitude)); }
     }
 }
