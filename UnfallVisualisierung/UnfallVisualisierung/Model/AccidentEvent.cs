@@ -39,8 +39,7 @@ namespace UnfallVisualisierung.Model
         public string Wind_Speed { get; set; }
         public double Precipitation { get; set; }
         public string Weather_Condition { get; set; }
-        public int WeatherGroup { get; set; }
-        public int WeatherId { get; set; }
+        public string WeatherGroupName { get; set; }
         public bool Amenity { get; set; }
         public bool Bump { get; set; }
         public bool Crossing { get; set; }

@@ -37,5 +37,24 @@ namespace UnfallVisualisierung.Controllers
                 return new StatusCodeResult(StatusCodes.Status500InternalServerError);
             }
         }
+
+        [HttpGet("Event/{eventId}")]
+        public async Task<IActionResult> GetEventById(string eventId)
+        {
+            _logger.LogDebug("GET event by id");
+            try
+            {
+                if (String.IsNullOrEmpty(eventId))
+                {
+                    return BadRequest();
+                }
+                return Ok(await _accidentRepository.GetEventById(eventId));
+            } catch(Exception e)
+            {
+                _logger.LogError("Error in get: " + e.Message);
+                return new StatusCodeResult(StatusCodes.Status500InternalServerError);
+            } 
+        }
+
     }
 }

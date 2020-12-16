@@ -17,5 +17,12 @@ namespace UnfallVisualisierung.Repositories.Interfaces
         /// <param name="endTime">end of timeframe</param>
         /// <returns>Data object with feature collection of coordinates for accidents in timeframe</returns>
         public Task<FeatureCollection> GetGeoData(DateTime startTime, DateTime endTime);
+
+        /// <summary>
+        /// Getter method for a specific accident event with id.
+        /// </summary>
+        /// <param name="eventId">eventId of the accident</param>
+        /// <returns>Full data object for the accident.</returns>
+        public Task<AccidentEvent> GetEventById(string eventId);
     }
 }

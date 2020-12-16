@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -40,6 +40,7 @@ CREATE TABLE IF NOT EXISTS AccidentEvents (
       Wind_Speed varchar(128),
       Precipitation double,
       Weather_Condition varchar(128),
+WeatherId int,
       Amenity bool,
       Bump bool,
       Crossing bool,
