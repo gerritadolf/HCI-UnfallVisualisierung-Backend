@@ -86,7 +86,6 @@ namespace UnfallVisualisierung.Repositories
                             Humidity,
                             Pressure ,
                             Visibility,
-                            Wind_Direction,
                             Wind_Speed,
                             Precipitation,
                             Amenity,
@@ -107,10 +106,13 @@ namespace UnfallVisualisierung.Repositories
                             Nautical_Twilight ,
                             Astromonical_Twilight,
                             wC.weather as Weather_Condition, 
-                            wG.Name as WeatherGroupName 
+                            wG.Name as WeatherGroupName,
+                            wDG.groupName as Wind_Direction
                             FROM AccidentEvents as aE 
                         INNER JOIN Weather_Condition as wC ON aE.WeatherId = wC.Id
                         INNER JOIN WeatherGroups as wG ON wG.Id = wC.groupId
+                        LEFT JOIN Wind_Direction as wD on wD.Id = aE.Wind_DirectionId
+                        LEFT JOIN Wind_Direction_Groups as wDG ON wD.GroupId = wDG.Id
                         WHERE aE.ID = @id;";
             var param = new DynamicParameters();
             param.Add("@id", eventId);

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -211,6 +211,30 @@ INSERT INTO `Weather_Condition` VALUES ('123', '5', 'Blowing Snow');
 INSERT INTO `Weather_Condition` VALUES ('124', '7', 'Blowing Sand');
 INSERT INTO `Weather_Condition` VALUES ('125', '14', 'Blowing Dust / Windy');
 INSERT INTO `Weather_Condition` VALUES ('126', '14', 'Blowing Dust');
+
+
+CREATE TABLE Wind_Direction_Groups (
+	Id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	GroupName VARCHAR(64) NOT NULL
+);
+
+CREATE TABLE Wind_Direction(
+	Id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	GroupId INT NOT NULL REFERENCES Wind_Direction_Groups(Id),
+	Wind_Direction_Name VARCHAR(64) NOT NULL
+);
+
+INSERT INTO Wind_Direction_Groups (Id, GroupName) VALUES
+(0, 'Calm'),
+(0,'SW'),
+(0,'S'),
+(0,'NW'),
+(0,'W'),
+(0,'SE'),
+(0,'N'),
+(0,'NE'),
+(0,'Variable'),
+(0,'E');
 ";
         public static string insertQuery = @"INSERT INTO
   AccidentEvents (
