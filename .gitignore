@@ -645,3 +645,5 @@ MigrationBackup/
 UnfallVisualisierung/US_Accidents_June20.csv
 
 ImportData/ImportData/ImportData/US_Accidents_June20.csv
+
+UnfallVisualisierung/UnfallVisualisierung/appsettings.Development.json
