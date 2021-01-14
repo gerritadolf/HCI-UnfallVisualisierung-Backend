@@ -10,7 +10,7 @@ namespace UnfallVisualisierung.Model
         public string ID { get; set; }
         public string Source { get; set; }
         public float TMC { get; set; }
-        public int Severity { get; set; }
+        public int Serverity { get; set; }
         public DateTime Start_Time { get; set; }
         public DateTime End_Time { get; set; }
         public float Start_Lat { get; set; }
