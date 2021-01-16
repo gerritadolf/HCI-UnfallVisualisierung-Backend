@@ -37,7 +37,7 @@ namespace UnfallVisualisierung
 
             services.AddControllers().AddNewtonsoftJson(options => {
                 options.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
-                options.SerializerSettings.Converters.Add(new StringEnumConverter(new CamelCaseNamingStrategy(), false));
+                options.SerializerSettings.Converters.Add(new StringEnumConverter(new CamelCaseNamingStrategy(), true));
             });
 
             services.AddCors();
