@@ -168,5 +168,41 @@ namespace UnfallVisualisierung.Repositories
                 throw;
             }
         }
+
+        public async Task<AccidentState> GetAccidentsByState(string state, DateTime startTime, DateTime endTime)
+        {
+            var result = new AccidentState();
+            result.State = state;
+            result.StartTime = startTime;
+            result.EndTime = endTime;
+            var query = @"SELECT 
+	                        DATE(Start_Time) as Day,
+	                        COUNT(id) as TotalCount,
+	                        SUM(if(serverity = 1, 1, 0)) as SeverityLevel1,
+	                        SUM(if(serverity = 2, 1, 0)) as SeverityLevel2,
+	                        SUM(if(serverity = 3, 1, 0)) as SeverityLevel3,
+	                        SUM(if(serverity = 4, 1, 0)) as SeverityLevel4
+                        FROM AccidentEvents
+                        WHERE Start_Time BETWEEN @startTime AND @endTime
+                        AND State = @state
+                        GROUP BY DATE(Start_Time)";
+            var param = new DynamicParameters();
+            param.Add("@state", state);
+            param.Add("@startTime", startTime);
+            param.Add("@endTime", endTime);
+
+            try
+            {
+                using (var con = await _dbContext.GetConnection())
+                {
+                    result.AccidentEvents = con.Query<AccidentStateDay>(query, param).ToList();
+                }
+                return result;
+            } catch(Exception e)
+            {
+                Console.WriteLine("Oh no", e);
+            }
+            return null;
+        }
     }
 }

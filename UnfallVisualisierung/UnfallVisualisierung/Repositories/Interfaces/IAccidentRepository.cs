@@ -25,5 +25,7 @@ namespace UnfallVisualisierung.Repositories.Interfaces
         /// <param name="eventId">eventId of the accident</param>
         /// <returns>Full data object for the accident.</returns>
         public Task<AccidentEvent> GetEventById(string eventId);
+
+        public Task<AccidentState> GetAccidentsByState(string state, DateTime startTime, DateTime endTime);
     }
 }

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Reflection.Metadata.Ecma335;
 using System.Threading.Tasks;
 using UnfallVisualisierung.Model;
 using UnfallVisualisierung.Repositories.Interfaces;
@@ -57,6 +58,21 @@ namespace UnfallVisualisierung.Controllers
 				_logger.LogError("Error in get: " + e.Message);
 				return new StatusCodeResult(StatusCodes.Status500InternalServerError);
 			}
+		}
+
+		[HttpGet("State/{state}")]
+		public async Task<IActionResult> GetAccidentByState(string state, [FromQuery] DateTime startDate, [FromQuery] DateTime endDate)
+		{
+			if (string.IsNullOrEmpty(state) 
+				|| startDate == null 
+				|| endDate == null 
+				|| startDate.Year < 2016 
+				|| endDate.Year < 2016)
+			{
+				return BadRequest();
+
+			}
+			return Ok(await _accidentRepository.GetAccidentsByState(state, startDate, endDate));
 		}
 
 		[HttpGet("FilterFlags")]
