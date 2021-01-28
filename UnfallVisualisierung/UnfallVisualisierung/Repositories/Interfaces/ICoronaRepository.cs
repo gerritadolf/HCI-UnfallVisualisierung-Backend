@@ -8,6 +8,7 @@ namespace UnfallVisualisierung.Repositories.Interfaces
 {
     public interface ICoronaRepository
     {
+        public Task<IEnumerable<CoronaStatistic>> GetCoronaStatistic();
         public Task<CoronaStatistic> GetCoronaStatisticByState(string state);
     }
 }

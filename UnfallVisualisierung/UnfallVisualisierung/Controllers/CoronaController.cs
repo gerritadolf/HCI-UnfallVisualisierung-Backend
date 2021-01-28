@@ -21,6 +21,12 @@ namespace UnfallVisualisierung.Controllers
             _coronaRepository = coronaRepository;
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetCoronaSatistic()
+        {
+            return Ok(await _coronaRepository.GetCoronaStatistic());
+        }
+
         [HttpGet("{state}")]
         public async Task<IActionResult> GetCoronaForState(string state)
         {

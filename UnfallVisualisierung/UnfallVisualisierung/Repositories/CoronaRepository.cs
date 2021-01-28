@@ -21,7 +21,26 @@ namespace UnfallVisualisierung.Repositories
             _logger = logger;
         }
 
-        public async Task<CoronaStatistic> GetCoronaStatisticByState(string state)
+		public async Task<IEnumerable<CoronaStatistic>> GetCoronaStatistic()
+		{
+            var query = "SELECT * FROM CoronaStatistic";
+
+            try
+            {
+                using (var con = await _dbContext.GetConnection())
+                {
+                    var result = con.Query<CoronaStatistic>(query);
+                    return result;
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("SQL Connection and Query failed!", ex);
+                return null;
+            }
+        }
+
+		public async Task<CoronaStatistic> GetCoronaStatisticByState(string state)
         {
             var query = "SELECT * FROM CoronaStatistic WHERE Province_State = @state";
             var param = new DynamicParameters();
@@ -40,7 +59,6 @@ namespace UnfallVisualisierung.Repositories
                 _logger.LogError("SQL Connection and Query failed!", ex);
                 return null;
             }
-            throw new NotImplementedException();
         }
     }
 }
