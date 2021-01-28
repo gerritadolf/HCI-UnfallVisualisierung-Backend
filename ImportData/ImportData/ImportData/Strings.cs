@@ -6,6 +6,7 @@ namespace ImportData
 {
     public static class Strings
     {
+        public static string getIds = "SELECT Id FROM AccidentEvents";
         public static string createTableString = @"
 CREATE TABLE IF NOT EXISTS AccidentEvents (
       ID varchar(50) not null primary key,
@@ -113,5 +114,27 @@ CREATE TABLE IF NOT EXISTS AccidentEvents (
       Astromonical_Twilight
   )
 VALUES ";
+
+        public static string coronaTable = @"CREATE TABLE IF NOT EXISTS CoronaStatistic (
+            Province_State VARCHAR(128) NOT NULL PRIMARY KEY,
+            Last_Update DATETIME NOT NULL,
+            Confirmed INT NOT NULL,
+            Deaths INT NOT NULL,
+            Recovered DOUBLE,
+            FIPS INT NOT NULL,
+            Incident_Rate FLOAT,
+            Total_Test_Results FLOAT);";
+        public static string coronaInsert = @"INSERT INTO CoronaStatistic ( 
+            Province_State ,
+            Last_Update ,
+            Confirmed,
+            Deaths,
+            Recovered,
+            FIPS,
+            Incident_Rate,
+            Total_Test_Results) VALUES ";
+
     }
+
+    
 }

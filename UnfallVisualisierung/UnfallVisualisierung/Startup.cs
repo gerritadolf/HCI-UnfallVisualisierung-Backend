@@ -34,6 +34,7 @@ namespace UnfallVisualisierung
             services.AddSingleton<DBConnection.IDBContext, DBConnection.DBContext>();
 
             services.AddScoped<IAccidentRepository, AccidentRepository>();
+            services.AddScoped<ICoronaRepository, CoronaRepository>();
 
             services.AddControllers().AddNewtonsoftJson(options => {
                 options.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;

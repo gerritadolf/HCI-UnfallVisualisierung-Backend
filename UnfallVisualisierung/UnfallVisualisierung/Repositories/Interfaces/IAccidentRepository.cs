@@ -27,5 +27,6 @@ namespace UnfallVisualisierung.Repositories.Interfaces
         public Task<AccidentEvent> GetEventById(string eventId);
 
         public Task<AccidentState> GetAccidentsByState(string state, DateTime startTime, DateTime endTime);
+ 
     }
 }
