@@ -649,7 +649,3 @@ ImportData/ImportData/ImportData/US_Accidents_June20.csv
 UnfallVisualisierung/UnfallVisualisierung/appsettings.Development.json
 
 ImportData/ImportData/ImportData/Corona/
-
-UnfallVisualisierung/UnfallVisualisierung/DBConnection/DBContext.cs
-
-ImportData/ImportData/ImportData/DbContext.cs
